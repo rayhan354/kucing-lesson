@@ -11,9 +11,13 @@ class CategoryForm
     {
         return $schema
             ->components([
-                TextInput::make('slug')
-                    ->required(),
                 TextInput::make('name')
+                    ->label('Category Name')
+                    ->hint('Enter the name of the category')
+                    ->helperText('This is the name of the category')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('slug')
                     ->required(),
             ]);
     }
