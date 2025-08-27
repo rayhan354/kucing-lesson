@@ -1,20 +1,4 @@
-<?php
-
-namespace App\Filament\Resources\Roles\Tables;
-
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\ForceDeleteBulkAction;
-use Filament\Actions\RestoreBulkAction;
-use Filament\Actions\ViewAction;
-use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-
-class RolesTable
-{
-    public static function configure(Table $table): Table
+/* public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -40,17 +24,17 @@ class RolesTable
             ])
             ->filters([
                 TrashedFilter::make(),
+                // Add other filters if you have them
             ])
-            ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                ]),
-            ]);
-    }
-}
+            ->filters([
+            TrashedFilter::make(),
+            // Add other filters if you have them
+        ])
+        ->actions([
+            Tables\Actions\ViewAction::make(),
+            Tables\Actions\EditAction::make(),
+        ])
+        ->bulkActions([
+            Tables\Actions\DeleteBulkAction::make(),
+        ]);
+    } */
