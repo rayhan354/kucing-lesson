@@ -22,7 +22,7 @@ class SectionContentResource extends Resource
 {
     protected static ?string $model = SectionContent::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::ListBullet;
 
     protected static ?string $recordTitleAttribute = 'title';
 
