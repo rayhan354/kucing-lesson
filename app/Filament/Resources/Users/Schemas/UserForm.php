@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users\Schemas;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
 class UserForm
@@ -34,6 +35,11 @@ class UserForm
                         'Cyber Security' => 'Cyber Security',
                         'Project Manager' => 'Project Manager',
                     ])
+                    ->required(),
+                FileUpload::make('photo')
+                    ->image()
+                    ->directory('user-photos')  // Saves to storage/app/public/user-photos
+                    ->preserveFilenames()
                     ->required(),
             ]);
     }
