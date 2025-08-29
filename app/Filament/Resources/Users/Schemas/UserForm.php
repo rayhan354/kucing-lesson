@@ -20,7 +20,19 @@ class UserForm
                     ->required(),
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
+                    ->helperText('Minimum 9 characters')
                     ->password()
+                    ->required()
+                    ->minLength(8)
+                    ->maxLength(255),
+                TextInput::make('occupation')
+                    ->options([
+                        'Developer' => 'Developer',
+                        'Designer' => 'Designer',
+                        'Marketer' => 'Marketer',
+                        'Cyber Security' => 'Cyber Security',
+                        'Project Manager' => 'Project Manager',
+                    ])
                     ->required(),
             ]);
     }
