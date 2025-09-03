@@ -9,6 +9,8 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\TagsColumn;  // Add this import for roles (multi-value display)
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -23,9 +25,17 @@ class UsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                TagsColumn::make('roles.name')  // Replaced: Displays roles as tags (e.g., "Admin", "User")
+                    ->label('Roles')
+                    ->sortable(false)  // Optional: Disable sorting if not needed
+                    ->searchable(),
+                ImageColumn::make('photo')  // Added: Shows photo as thumbnail
+                    ->disk('public')
+                    ->circular()  // Optional: Round avatar style
+                    ->size(40),   // Small size for table
+                TextColumn::make('occupation')  // Added: Displays occupation
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -22,11 +22,14 @@ class UserForm
                     ->required(),
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
-                    ->helperText('Minimum 9 characters')
                     ->password()
                     ->required()
-                    ->minLength(8)
-                    ->maxLength(255),
+                    ->visibleOn('create'),  // Show only on create, hide on edit if desired
+                Select::make('roles')
+                    ->multiple()
+                    ->relationship('roles', 'name')
+                    ->preload()
+                    ->required(),
                 Select::make('occupation')
                     ->options([
                         'Developer' => 'Developer',
@@ -38,6 +41,7 @@ class UserForm
                     ->required(),
                 FileUpload::make('photo')
                     ->image()
+                    ->disk('public')  // Saves to storage/app/public/user-photos (publicly accessible)
                     ->directory('user-photos')  // Saves to storage/app/public/user-photos
                     ->preserveFilenames()
                     ->required(),
