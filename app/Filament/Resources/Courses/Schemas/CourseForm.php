@@ -20,6 +20,7 @@ class CourseForm
                 Fieldset::make('Details')
                 ->components([
                     TextInput::make('name')
+                    ->maxLength(255)
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
@@ -42,6 +43,8 @@ class CourseForm
                         ->required(),
                     Select::make('category_id')
                         ->relationship('category', 'name')
+                        ->searchable()
+                        ->preload()
                         ->required(),
                     ])
             ]);
