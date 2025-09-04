@@ -10,6 +10,7 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -19,16 +20,19 @@ class CoursesTable
     {
         return $table
             ->columns([
-                TextColumn::make('slug')
+                ImageColumn::make('thumbnail')  // Added: Shows photo as thumbnail
+                    ->disk('public')
                     ->searchable(),
                 TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('thumbnail')
+                    ->searchable()
+                    ->extraAttributes(['style' => 'min-width: 300px;'])  // Sets minimum width to make it wider than others
+                    ->wrap(),  // Optional: Wraps long text to prevent overflow
+                // TextColumn::make('slug')
+                //     ->searchable(),
+                TextColumn::make('category.name')
                     ->searchable(),
                 IconColumn::make('is_popular')
                     ->boolean(),
-                TextColumn::make('category.name')
-                    ->searchable(),
                 TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()

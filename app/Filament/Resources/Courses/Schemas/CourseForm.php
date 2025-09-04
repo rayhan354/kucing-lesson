@@ -27,10 +27,13 @@ class CourseForm
                     ->required(),
                 FileUpload::make('thumbnail')
                     ->required()
+                    ->disk('public')  // Saves to storage/app/public/user-photos (publicly accessible)
+                    ->directory('courses-photos')  // Saves to storage/app/public/user-photos
+                    ->preserveFilenames()
                     ->image(),
                 ]),
                 Fieldset::make('Additional')
-                ->columnSpanFull()
+                ->columnSpan(2)
                 ->schema([
                     Repeater::make('benefits')
                         ->relationship('benefits')
@@ -39,8 +42,7 @@ class CourseForm
                                 ->required(),
                         ]),
                     Textarea::make('about')
-                        ->required()
-                        ->columnSpanFull(),
+                        ->required(),
                     Toggle::make('is_popular')
                         ->required(),
                     Select::make('category_id')
