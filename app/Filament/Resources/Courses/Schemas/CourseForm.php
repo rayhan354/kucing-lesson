@@ -18,6 +18,7 @@ class CourseForm
         return $schema
             ->components([
                 Fieldset::make('Details')
+                ->columnSpanFull()
                 ->components([
                     TextInput::make('name')
                     ->maxLength(255)
@@ -29,6 +30,7 @@ class CourseForm
                     ->image(),
                 ]),
                 Fieldset::make('Additional')
+                ->columnSpanFull()
                 ->schema([
                     Repeater::make('benefits')
                         ->relationship('benefits')
