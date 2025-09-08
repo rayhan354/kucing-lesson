@@ -15,11 +15,12 @@ class PricingForm
                     ->required(),
                 TextInput::make('duration')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('Months'),
                 TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix('IDR'),
             ]);
     }
 }

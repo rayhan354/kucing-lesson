@@ -15,7 +15,7 @@ class PricingInfolist
                 TextEntry::make('duration')
                     ->numeric(),
                 TextEntry::make('price')
-                    ->money(),
+                    ->money('IDR'),
                 TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('updated_at')

@@ -13,14 +13,31 @@ class SectionContentForm
     {
         return $schema
             ->components([
+                Select::make('course_section_id')
+                ->label('Course Section')
+                ->options(function () {
+                    return \App\Models\CourseSection::with('course')
+                        ->get()
+                        ->mapWithKeys(function ($section) {
+                            return [
+                                $section->id => $section->course
+                                    ? "{$section->course->name} - {$section->name}"
+                                    : $section->name, // Fallback if course is null
+                            ];
+                        })
+                        ->toArray(); // Convert the collection to an array
+                })
+                ->searchable()
+                ->required(),
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Textarea::make('content')
                     ->required()
                     ->columnSpanFull(),
-                Select::make('course_section_id')
-                    ->relationship('courseSection', 'name')
-                    ->required(),
+                // Select::make('course_section_id')
+                //     ->relationship('courseSection', 'name')
+                //     ->required(),
             ]);
     }
 }
