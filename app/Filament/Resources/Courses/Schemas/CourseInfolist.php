@@ -19,7 +19,7 @@ class CourseInfolist
                 ->label('Photo')
                 ->disk('public')  // Assumes public storage
                 ->url(fn ($record): string => asset('storage/' . $record->photo))  // Forces full URL
-                ->size(150),  // Thumbnail size
+                ->extraImgAttributes(['class' => 'w-full h-auto']), // Thumbnail size adjusted
                 IconEntry::make('is_popular')
                     ->boolean(),
                 TextEntry::make('category.name'),
