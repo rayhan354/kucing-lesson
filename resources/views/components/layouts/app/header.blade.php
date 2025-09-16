@@ -2,6 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
+        <script type="text/javascript" 
+                src="https://js-cdn.dynatrace.com/jstag/1547c029d8c/bf21460kzq/1ef70835caef34c5_complete.js" 
+                crossorigin="anonymous">
+        </script>
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
         <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -47,7 +51,7 @@
             <flux:dropdown position="top" align="end">
                 <flux:profile
                     class="cursor-pointer"
-                    :initials="auth()->user()->initials()"
+                    :initials="auth()->user()->initials() ?? 'G'"
                 />
 
                 <flux:menu>
@@ -58,7 +62,7 @@
                                     <span
                                         class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
                                     >
-                                        {{ auth()->user()->initials() }}
+                                        {{ auth()->user()->initials() ?? 'G' }}
                                     </span>
                                 </span>
 

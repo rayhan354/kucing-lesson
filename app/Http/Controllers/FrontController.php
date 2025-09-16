@@ -29,7 +29,8 @@ class FrontController extends Controller
     //
     public function index()
     {
-        return view('front.index');
+        $user = auth()->user(); // This will be null if not logged in
+        return view('front.index', compact('user'));
     }
 
     public function pricing()

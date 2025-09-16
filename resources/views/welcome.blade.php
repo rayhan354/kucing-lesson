@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <script type="text/javascript" 
+                src="https://js-cdn.dynatrace.com/jstag/1547c029d8c/bf21460kzq/1ef70835caef34c5_complete.js" 
+                crossorigin="anonymous">
+        </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

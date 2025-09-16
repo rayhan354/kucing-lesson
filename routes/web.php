@@ -4,6 +4,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
@@ -62,6 +64,9 @@ Route::middleware('auth')->group(function () {
         ->name('front.payment_store_midtrans');
     });
 
+    Route::get('/settings/profile', [SettingsController::class, 'profile'])
+        ->name('settings.profile')
+        ->middleware('auth');  // Add 'auth' if this should be protected
 
 });
 

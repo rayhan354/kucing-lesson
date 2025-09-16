@@ -56,6 +56,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->renderHook(
+                'panels::head.start',
+                fn () => new \Illuminate\Support\HtmlString('<script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/1547c029d8c/bf21460kzq/f69d3356b587e5db_complete.js" crossorigin="anonymous"></script>"')
+            );
     }
 }
